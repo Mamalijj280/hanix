@@ -364,41 +364,92 @@ ul {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* قبلاً 250px بود، الان 300px */
+    gap: 2rem; /* فاصله بین عکس‌ها رو هم کمی بیشتر کردم */
     justify-items: center;
-}
-
-.gallery-grid img {
-    width: 100%;
-    max-width: 350px;
+  }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
-
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.gallery-grid img {
+  }
+  
+  .gallery-img {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
+    max-width: 1000px; /* قبلاً 500px بود، الان تا 600px بزرگ میشه */
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
-}
+  }
+  
+  .gallery-img:hover {
+    transform: scale(1.05); /* هاور انیمیشن نرم */
+  }
+  
+  .gallery-btn {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.8rem 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    opacity: 0;
+  }
+  
+  .gallery-item:hover .gallery-btn {
+    opacity: 1;
+  }
+  
+  .gallery-btn:hover {
+    background: #ffd700;
+    color: #0a1f44;
+  }
 
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
+  /* lighter for image */
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+  
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+    animation: zoomIn 0.5s;
+    object-fit: contain;
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+
+
+  /* Contact */
 #contact {
     background: linear-gradient(135deg, #e0f7fa 0%, #f1f8e9 100%);
     padding: 6rem 2rem;
@@ -607,25 +658,55 @@ footer {
     margin-top: 3rem;
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        gap: 0;
+/* برای موبایل (زیر 768px) */
+@media (max-width: 767px) {
+    .nav-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
     }
-
-    header h1, nav ul {
-        float: none;
-        text-align: center;
+  
+    .nav-button {
+      margin-top: 1rem;
     }
-
+  
+    .services-grid, .gallery-grid, .locations-grid {
+      grid-template-columns: 1fr;
+    }
+  
     .home-content h2 {
-        font-size: 2.2rem;
+      font-size: 2rem;
     }
-
+  
     .home-content p {
-        font-size: 1.1rem;
+      font-size: 1rem;
     }
-}
+  
+    .before-after-button, .service-button, .call-button {
+      width: 80%;
+      font-size: 1rem;
+    }
+  }
+  
+  /* برای تبلت (بین 768px و 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .services-grid, .gallery-grid, .locations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .nav-links {
+      justify-content: center;
+      gap: 2rem;
+    }
+  }
+  
+  /* برای دسکتاپ (بزرگتر از 1024px) */
+  @media (min-width: 1024px) {
+    .services-grid, .gallery-grid, .locations-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
 
 /* footer */
 
@@ -742,5 +823,48 @@ footer .copyright {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* Gallery image botton  */
 
-
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+  }
+  
+  .gallery-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.6rem 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    opacity: 0;
+  }
+  
+  .gallery-item:hover .gallery-btn {
+    opacity: 1;
+  }
+  
+  .gallery-btn:hover {
+    background: #ffd700;
+    color: #0a1f44;
+  }
+  

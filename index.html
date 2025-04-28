@@ -167,48 +167,65 @@
     <div class="container">
       <h2>Gallery</h2>
   
+      <!-- Decking -->
       <div id="decking-gallery" class="gallery-section">
         <h3>Decking Projects</h3>
         <div class="gallery-grid">
-          <img src="image/comingsoon.png" alt="Decking Project 1">
-          <img src="image/comingsoon.png" alt="Decking Project 2">
-          <img src="image/comingsoon.png" alt="Decking Project 3">
-          <img src="image/comingsoon.png" alt="Decking Project 4">
+  
+          <div class="gallery-item">
+            <img src="image/before-decking.jpg" alt="Decking Project 1" class="gallery-img">
+            <button class="gallery-btn" onclick="toggleGalleryImage(this)">View After</button>
+          </div>
+  
+          <div class="gallery-item">
+            <img src="image/before-decking.jpg" alt="Decking Project 2" class="gallery-img">
+            <button class="gallery-btn" onclick="toggleGalleryImage(this)">View After</button>
+          </div>
+  
+          <div class="gallery-item">
+            <img src="image/before-decking.jpg" alt="Decking Project 3" class="gallery-img">
+            <button class="gallery-btn" onclick="toggleGalleryImage(this)">View After</button>
+          </div>
+  
+          <div class="gallery-item">
+            <img src="image/before-decking.jpg" alt="Decking Project 4" class="gallery-img">
+            <button class="gallery-btn" onclick="toggleGalleryImage(this)">View After</button>
+          </div>
+  
         </div>
       </div>
-  
-      <div id="fencing-gallery" class="gallery-section">
+      
+      <!-- Fencing -->
+      <div id="Fencing" class="gallery-section">
         <h3>Fencing Projects</h3>
         <div class="gallery-grid">
-          <img src="image/comingsoon.png" alt="Fencing Project 1">
-          <img src="image/comingsoon.png" alt="Fencing Project 2">
-          <img src="image/comingsoon.png" alt="Fencing Project 3">
-          <img src="image/comingsoon.png" alt="Fencing Project 4">
-        </div>
-      </div>
   
-      <div id="landscaping-gallery" class="gallery-section">
-        <h3>Landscaping Projects</h3>
-        <div class="gallery-grid">
-          <img src="image/comingsoon.png" alt="Landscaping Project 1">
-          <img src="image/comingsoon.png" alt="Landscaping Project 2">
-          <img src="image/comingsoon.png" alt="Landscaping Project 3">
-          <img src="image/comingsoon.png" alt="Landscaping Project 4">
-        </div>
-      </div>
+          <div class="gallery-item">
+            <img src="image/before-decking.jpg" alt="Fencing Project 1" class="gallery-img">
+            <button class="gallery-btn" onclick="toggleGalleryImage(this)">View After</button>
+          </div>
   
-      <div id="roofcleaning-gallery" class="gallery-section">
-        <h3>Roof Cleaning Projects</h3>
-        <div class="gallery-grid">
-          <img src="image/comingsoon.png" alt="Roof Cleaning Project 1">
-          <img src="image/comingsoon.png" alt="Roof Cleaning Project 2">
-          <img src="image/comingsoon.png" alt="Roof Cleaning Project 3">
-          <img src="image/comingsoon.png" alt="Roof Cleaning Project 4">
+          <div class="gallery-item">
+            <img src="image/before-decking.jpg" alt="Fencing Project 2" class="gallery-img">
+            <button class="gallery-btn" onclick="toggleGalleryImage(this)">View After</button>
+          </div>
+  
+          <div class="gallery-item">
+            <img src="image/before-decking.jpg" alt="Decking Project 3" class="gallery-img">
+            <button class="gallery-btn" onclick="toggleGalleryImage(this)">View After</button>
+          </div>
+  
+          <div class="gallery-item">
+            <img src="image/before-decking.jpg" alt="Decking Project 4" class="gallery-img">
+            <button class="gallery-btn" onclick="toggleGalleryImage(this)">View After</button>
+          </div>
+  
         </div>
       </div>
   
     </div>
   </section>
+  
   
 
 <!-- contact -->
@@ -234,6 +251,8 @@
             <option value="Burnaby">Burnaby</option>
             <option value="Surrey">Surrey</option>
             <option value="Coquitlam">Coquitlam</option>
+            <option value="North Vancouver">North Vancouver</option>
+            <option value="West Vancouver">/west Vancouver</option>
           </select>
   
           <input type="date" name="date" required>
@@ -356,7 +375,22 @@ flatpickr("input[type=date]", {
       setInterval(showPopup, 600000); // هر 10 دقیقه
     }
     </script>
-    
+    <!-- before & After -->
+    <script>
+      function toggleGalleryImage(button) {
+        const img = button.previousElementSibling;
+        const src = img.getAttribute('src');
+      
+        if (src.includes('before')) {
+          img.setAttribute('src', src.replace('before', 'after'));
+          button.innerText = 'View Before';
+        } else if (src.includes('after')) {
+          img.setAttribute('src', src.replace('after', 'before'));
+          button.innerText = 'View After';
+        }
+      }
+      </script>
+      
 
 </body>
 </html>
