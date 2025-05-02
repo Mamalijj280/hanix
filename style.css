@@ -415,38 +415,38 @@ ul {
   /* lighter for image */
 
   .lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+  animation: zoomIn 0.5s;
+  object-fit: contain;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
-  
-  .lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
-    animation: zoomIn 0.5s;
-    object-fit: contain;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  @keyframes zoomIn {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
+}
+
 
 
   /* Contact */
@@ -827,44 +827,27 @@ footer .copyright {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* قبلاً 250px یا 300px بود، حالا بزرگتر */
+    gap: 2rem;
+    justify-items: center;
   }
   
   .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   }
   
-  .gallery-item img {
+  .gallery-img {
     width: 100%;
-    display: block;
-    border-radius: 10px;
+    max-width: 100%; /* دیگه محدود به 500 یا 600 نیست، تا تمام عرض container باز میشه */
+    border-radius: 12px;
+    transition: transform 0.3s ease;
   }
   
-  .gallery-btn {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.6rem 1.5rem;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    opacity: 0;
+  .gallery-img:hover {
+    transform: scale(1.05); /* انیمیشن قشنگ هاور */
   }
   
-  .gallery-item:hover .gallery-btn {
-    opacity: 1;
-  }
-  
-  .gallery-btn:hover {
-    background: #ffd700;
-    color: #0a1f44;
-  }
   
